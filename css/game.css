@@ -1,0 +1,126 @@
+/*
+=========================
+========= Fonts =========
+=========================
+*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+/*
+=========================
+======== General ========
+=========================
+*/
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #151919;
+  color: white;
+  font-family: 'Open Sans';
+}
+
+.wrapper {
+  z-index: 5;;
+  position: relative;
+  top: 35%;
+  margin-top: -50px;
+  text-align: center;
+}
+
+/*
+=========================
+======== Buttons ========
+=========================
+*/
+button {
+  background: #151919;
+  border: 2px solid #64FE63;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 20px;
+  width: 250px;
+  height: 75px;
+  margin: 10px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #64FE63;
+  color: #000;
+  cursor: pointer;
+  border: 10px solid #64fe63;
+  font-weight: bold;
+}
+
+button:focus {
+  outline: none;
+}
+
+/*
+=========================
+======= Game Data =======
+=========================
+*/
+#timer {
+  color: #E63232;
+  font-family: 'Open Sans';
+  position: relative;
+  font-size: 50px;
+  bottom: 120px;
+  padding: 0;
+}
+
+#score {
+  position: absolute;
+  font-size: 25px;
+  right: 40px;
+  top: -180px;
+}
+
+#currentWord {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 3px;;
+  bottom: 60px;
+  font-size: 50px;
+}
+
+/*
+=========================
+====== Loss Screen ======
+=========================
+*/
+#lossScreen {
+  opacity: 0;
+  z-index: 1;
+  margin: auto;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  height: 500px;
+  background: #001400;
+  border: 2px solid #88FF88;
+  border-radius: 5px;
+  transition: opacity .25s ease-in-out;
+}
+
+#lossScreen h1 {
+  margin-top: 100px;
+}
+
+#lossScreen p {
+  font-size: 20px;
+}
+
+#lossScreen #finalScore {
+  font-size: 35px;
+}

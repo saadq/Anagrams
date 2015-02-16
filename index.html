@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Anagrams</title>
+  <link rel="stylesheet" type="text/css" href="css/home.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>Anagrams</h1>
+    <p>An anagram is a word formed from another by rearranging its letters. For example, "naimla" is an anagram of the word "animal".</p>
+    <p> In this game, you must select the choice which is an anagram of the current word being displayed. You will have 5 seconds to choose, and your goal is to get as many correct as possible until you lose.</p>
+    <button id="btn">Begin</button>
+  </div>
+
+  <script type="text/javascript">
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function(){
+      window.location = 'anagrams.html';
+    });
+  </script>
+</body>
+
+</html>
