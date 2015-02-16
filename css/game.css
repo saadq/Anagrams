@@ -107,7 +107,7 @@ button:focus {
   right: 0;
   width: 400px;
   height: 500px;
-  background: #001400;
+  background: #000400;
   border: 2px solid #88FF88;
   border-radius: 5px;
   transition: opacity .25s ease-in-out;
