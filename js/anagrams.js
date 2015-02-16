@@ -28,6 +28,9 @@
   // Stores the count of the remaining words
   dictionary.wordCount = dictionary.words.length;
 
+  /**
+  * Update the current count of the remaining words
+  */
   dictionary.updateWordCount = function() {
     this.wordCount = this.words.length;
   };
@@ -36,7 +39,7 @@
   * Returns a random lowercase letter
   */
   dictionary.randLetter = function() {
-    return String.fromCharCode(97 + Math.floor(Math.random() * 26)); //97 is charcode for lowercase a
+    return String.fromCharCode(97 + Math.floor(Math.random() * 26));
   };
 
   /**
