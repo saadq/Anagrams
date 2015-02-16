@@ -236,8 +236,9 @@
     // If a wrong choice was made
     if(clickedButton && !this.gameOver) {
       // Show their incorrect choice in red
-      clickedButton.style.background = 'red';
-      clickedButton.style.border = 'red';
+      clickedButton.style.background = '#ff3333';
+      clickedButton.style.borderWidth = '5px';
+      clickedButton.style.borderColor = 'red';
     }
 
     // Set the status of the game to be game over
