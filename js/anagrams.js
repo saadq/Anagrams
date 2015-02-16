@@ -4,15 +4,6 @@
   // Dictionary object used to manipulate anagrams
   var dictionary = {};
 
-  // List of letters used to help create incorrect choices
-  dictionary.letters = [
-    'a', 'b', 'c', 'd', 'e', 'f',
-    'g', 'h', 'i', 'j', 'k', 'l',
-    'm', 'n', 'o', 'p', 'q', 'r',
-    's', 't', 'u', 'v', 'w', 'x',
-    'y', 'z'
-  ];
-
   // List of words that are used for anagram questions
   dictionary.words = [
     'adaxial', 'agreeably', 'antinoise', 'asthenia', 'astint', 'babushka', 'bailiffry',
@@ -42,10 +33,10 @@
   };
 
   /**
-  * Returns a random letter from dictionary.letters
+  * Returns a random lowercase letter
   */
   dictionary.randLetter = function() {
-    return this.letters[Math.floor(Math.random() * 100 % 26)];
+    return String.fromCharCode(97 + Math.floor(Math.random() * 26)); //97 is charcode for lowercase a
   };
 
   /**
