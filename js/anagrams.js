@@ -102,6 +102,13 @@
     return this.shuffle(word);
   };
 
+  /**
+  * Checks to see if the given word is a correct answer
+  */
+  dictionary.isCorrect = function(word) {
+    return this.sort(word) === this.sort(dictionary.correctButton.innerHTML);
+  };
+
   // View object used to change information displayed on the page
   var view = {};
 
@@ -171,21 +178,20 @@
   view.assignWords = function() {
     // Randomly choose a word to use as the anagram question
     this.currWord.innerHTML = dictionary.randWord();
+    var word = view.currWord.innerHTML;
 
     // Choose a random button to hold the correct choice
     dictionary.correctButton = this.buttons[Math.floor(Math.random() * 4)];
-    dictionary.correctButton.innerHTML = dictionary.getCorrectChoice(this.currWord.innerHTML);
+    dictionary.correctButton.innerHTML = dictionary.getCorrectChoice(word);
 
     // Give the rest of the buttons incorrect choices
     for(var i = 0; i < this.buttons.length; i++) {
-      if(this.buttons[i] === dictionary.correctButton) {
-        continue;
-      } else {
-        this.buttons[i].innerHTML = dictionary.getIncorrectChoice(this.currWord.innerHTML);
-        // Make sure that the incorrect choice is not actually correct
-        while(dictionary.sort(this.buttons[i].innerHTML) === dictionary.sort(dictionary.correctButton.innerHTML)) {
-          this.buttons[i].innerHTML = dictionary.getIncorrectChoice(this.currWord.innerHTML);
-        }
+      if(this.buttons[i] === dictionary.correctButton) { continue; }
+
+      // Assign each button an incorrect choice and make sure it isn't actually correct
+      this.buttons[i].innerHTML = dictionary.getIncorrectChoice(word);
+      while(dictionary.isCorrect(this.buttons[i].innerHTML)) {
+        this.buttons[i].innerHTML = dictionary.getIncorrectChoice(word);
       }
     }
   };
