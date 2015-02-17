@@ -80,6 +80,9 @@
     var removedWord = dictionary.words.splice(index, 1);
   };
 
+  /**
+  * Sorts a word into alphabetical order
+  */
   dictionary.sort = function(word) {
     return word.split('').sort().join('');
   };
