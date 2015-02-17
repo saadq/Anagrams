@@ -210,7 +210,8 @@
       } else {
         view.seconds--;
       }
-      document.getElementById('timer').innerHTML = (view.seconds / 100).toFixed(2);
+      var time = document.getElementById('timer');
+      time.innerHTML = (view.seconds / 100).toFixed(2);
     }, 10);
   };
 
