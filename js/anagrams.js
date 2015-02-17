@@ -183,7 +183,7 @@
       } else {
         this.buttons[i].innerHTML = dictionary.getIncorrectChoice(this.currWord.innerHTML);
         // Make sure that the incorrect choice is not actually correct
-        while(dictionary.sort(this.buttons[i].innerHTML) == dictionary.sort(dictionary.correctButton.innerHTML)) {
+        while(dictionary.sort(this.buttons[i].innerHTML) === dictionary.sort(dictionary.correctButton.innerHTML)) {
           this.buttons[i].innerHTML = dictionary.getIncorrectChoice(this.currWord.innerHTML);
         }
       }
