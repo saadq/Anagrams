@@ -133,6 +133,31 @@
   // Used to start a new countdown timer
   view.timer = null;
 
+
+
+  /**
+  * The event handler for each button
+  *
+  * Moved outside the loop as per good practices
+  *
+  */
+  view.makeClickHandler = function(event) {
+    if(event.target === dictionary.correctButton) {
+      if(!view.gameOver) {
+        dictionary.removeWord(view.currWord.innerHTML);
+        dictionary.updateWordCount();
+        view.assignWords();
+        view.updateScore();
+        view.resetTimer();
+        view.displayTimer();
+      }
+    } else {
+      if(!view.gameOver) {
+        view.endGame(event.target);
+      }
+    }
+};
+
   /**
   * Manages the current word and button choices
   *
@@ -148,25 +173,12 @@
   view.render = function() {
     view.assignWords();
     view.displayTimer();
-    for(var i = 0; i < this.buttons.length; i++) {
-      this.buttons[i].addEventListener('click', function(event) {
-        if(event.target === dictionary.correctButton) {
-          if(!view.gameOver) {
-            dictionary.removeWord(view.currWord.innerHTML);
-            dictionary.updateWordCount();
-            view.assignWords();
-            view.updateScore();
-            view.resetTimer();
-            view.displayTimer();
-          }
-        } else {
-          if(!view.gameOver) {
-            view.endGame(event.target);
-          }
-        }
-      });
-    }
+
+    for(var i = 0; i < this.buttons.length; i++)
+      this.buttons[i].addEventListener("click", view.makeClickHandler);
+
     var resetButton = document.getElementById('reset');
+
     resetButton.addEventListener('click', function() {
       window.location = 'anagrams.html';
     });
