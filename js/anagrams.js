@@ -133,13 +133,8 @@
   // Used to start a new countdown timer
   view.timer = null;
 
-
-
   /**
   * The event handler for each button
-  *
-  * Moved outside the loop as per good practices
-  *
   */
   view.makeClickHandler = function(event) {
     if(event.target === dictionary.correctButton) {
@@ -156,29 +151,22 @@
         view.endGame(event.target);
       }
     }
-};
+  };
 
   /**
-  * Manages the current word and button choices
-  *
-  * If correct choice is clicked:
-  * - Remove current word from dictionary.words
-  * - Update the word count
-  * - Update the current word
-  * - Update the score
-  * - Reset the timer
-  *
-  * If incorrect choice is clicked, display a loss screen
+  * Starts the game by assigning words, buttons, and displaying the timer
   */
   view.render = function() {
     view.assignWords();
     view.displayTimer();
 
-    for(var i = 0; i < this.buttons.length; i++)
-      this.buttons[i].addEventListener("click", view.makeClickHandler);
+    for(var i = 0; i < this.buttons.length; i++) {
+      this.buttons[i].addEventListener('click', view.makeClickHandler);
+    }
 
     var resetButton = document.getElementById('reset');
 
+    // Start the game over if the reset button is clicked
     resetButton.addEventListener('click', function() {
       window.location = 'anagrams.html';
     });
