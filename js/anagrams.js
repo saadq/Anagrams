@@ -29,22 +29,22 @@
   dictionary.wordCount = dictionary.words.length;
 
   /**
-  * Update the current count of the remaining words
-  */
+   * Update the current count of the remaining words
+   */
   dictionary.updateWordCount = function() {
     this.wordCount = this.words.length;
   };
 
   /**
-  * Returns a random lowercase letter
-  */
+   * Returns a random lowercase letter
+   */
   dictionary.randLetter = function() {
     return String.fromCharCode(97 + Math.floor(Math.random() * 26));
   };
 
   /**
-  * Replaces one letter of a word with a randomly selected letter
-  */
+   * Replaces one letter of a word with a randomly selected letter
+   */
   dictionary.replaceLetter = function(word) {
     var index = Math.floor(Math.random() * 100 % word.length);
     var newWord = word.slice(0, index) + word.slice(index + 1);
@@ -52,15 +52,15 @@
   };
 
   /**
-  * Returns a random word from dictionary.words
-  */
+   * Returns a random word from dictionary.words
+   */
   dictionary.randWord = function() {
     return this.words[Math.floor(Math.random() * 100 % this.wordCount)];
   };
 
   /**
-  * Randomly shuffles the letters around in a word
-  */
+   * Randomly shuffles the letters around in a word
+   */
   dictionary.shuffle = function(word) {
     var fragments = word.split('');
     for(var i = fragments.length; i > 0;) {
@@ -73,38 +73,38 @@
   };
 
   /**
-  * Removes a word from dictionary.words
-  */
+   * Removes a word from dictionary.words
+   */
   dictionary.removeWord = function(word) {
     var index = dictionary.words.indexOf(word);
     var removedWord = dictionary.words.splice(index, 1);
   };
 
   /**
-  * Sorts a word into alphabetical order
-  */
+   * Sorts a word into alphabetical order
+   */
   dictionary.sort = function(word) {
     return word.split('').sort().join('');
   };
 
   /**
-  * Returns the correct answer for the current word
-  */
+   * Returns the correct answer for the current word
+   */
   dictionary.getCorrectChoice = function(word) {
     return this.shuffle(word);
   };
 
   /**
-  * Returns an incorrect answer for the current word
-  */
+   * Returns an incorrect answer for the current word
+   */
   dictionary.getIncorrectChoice = function(word) {
     word = this.replaceLetter(word);
     return this.shuffle(word);
   };
 
   /**
-  * Checks to see if the given word is a correct answer
-  */
+   * Checks to see if the given word is a correct answer
+   */
   dictionary.isCorrect = function(word) {
     return this.sort(word) === this.sort(dictionary.correctButton.innerHTML);
   };
@@ -134,18 +134,16 @@
   view.timer = null;
 
   /**
-  * The event handler for each button
-  */
+   * The event handler for each button
+   */
   view.makeClickHandler = function(event) {
-    if(event.target === dictionary.correctButton) {
-      if(!view.gameOver) {
-        dictionary.removeWord(view.currWord.innerHTML);
-        dictionary.updateWordCount();
-        view.assignWords();
-        view.updateScore();
-        view.resetTimer();
-        view.displayTimer();
-      }
+    if(event.target === dictionary.correctButton && !view.gameOver) {
+      dictionary.removeWord(view.currWord.innerHTML);
+      dictionary.updateWordCount();
+      view.assignWords();
+      view.updateScore();
+      view.resetTimer();
+      view.displayTimer();
     } else {
       if(!view.gameOver) {
         view.endGame(event.target);
@@ -154,27 +152,8 @@
   };
 
   /**
-  * Starts the game by assigning words, buttons, and displaying the timer
-  */
-  view.render = function() {
-    view.assignWords();
-    view.displayTimer();
-
-    for(var i = 0; i < this.buttons.length; i++) {
-      this.buttons[i].addEventListener('click', view.makeClickHandler);
-    }
-
-    var resetButton = document.getElementById('reset');
-
-    // Start the game over if the reset button is clicked
-    resetButton.addEventListener('click', function() {
-      window.location = 'anagrams.html';
-    });
-  };
-
-  /**
-  * Randomly assigns the current word and correct and incorrect choices to the four buttons
-  */
+   * Randomly assigns the current word and correct and incorrect choices to the four buttons
+   */
   view.assignWords = function() {
     // Randomly choose a word to use as the anagram question
     this.currWord.innerHTML = dictionary.randWord();
@@ -197,8 +176,8 @@
   };
 
   /**
-  * Displays and updates the timer
-  */
+   * Displays and updates the timer
+   */
   view.displayTimer = function() {
     // Clear the previous timer
     clearInterval(view.timer);
@@ -216,15 +195,15 @@
   };
 
   /**
-  * Resets the timer back to the beginning
-  */
+   * Resets the timer back to the beginning
+   */
   view.resetTimer = function() {
     view.seconds = 500;
   };
 
   /**
-  * Updates the player's current score
-  */
+   * Updates the player's current score
+   */
   view.updateScore = function() {
     this.scoreNum++;
     this.score.innerHTML = 'Score: ' + this.scoreNum;
@@ -234,19 +213,15 @@
   };
 
   /**
-  * Stops the timer, shows the correct answer, and ends the game
-  */
+   * Stops the timer, shows the correct answer, and ends the game
+   */
   view.endGame = function(clickedButton) {
-    // If a wrong choice was made
     if(clickedButton && !this.gameOver) {
-      // Show their incorrect choice in red
+      // Show their incorrect choice in red (only if a wrong choice was made)
       clickedButton.style.background = '#ff3333';
       clickedButton.style.borderWidth = '5px';
       clickedButton.style.borderColor = 'red';
     }
-
-    // Set the status of the game to be game over
-    this.gameOver = true;
 
     // Show the correct answer in green
     dictionary.correctButton.style.background = 'green';
@@ -255,18 +230,39 @@
     // Stop the timer
     view.seconds = 0;
 
+    // Set the status of the game to be game over
+    this.gameOver = true;
+
     // Go to the loss screen after a couple of seconds
     setTimeout(view.displayLossScreen, 1500);
   };
 
   /**
-  * Displays the loss screen
-  */
+   * Displays the loss screen
+   */
   view.displayLossScreen = function() {
     // Reveal the loss screen and show the final score
     document.getElementById('lossScreen').style.zIndex = '10';
     document.getElementById('lossScreen').style.opacity = '1';
     document.getElementById('finalScore').innerHTML = view.scoreNum;
+
+    // Create the reset button
+    var resetButton = document.getElementById('reset');
+    resetButton.addEventListener('click', function() {
+      window.location = 'anagrams.html';
+    });
+  };
+
+  /**
+   * Starts the game by assigning the current word, the button choices, and displaying the timer
+   */
+  view.render = function() {
+    view.assignWords();
+    view.displayTimer();
+
+    for(var i = 0; i < this.buttons.length; i++) {
+      this.buttons[i].addEventListener('click', view.makeClickHandler);
+    }
   };
 
   view.render();
