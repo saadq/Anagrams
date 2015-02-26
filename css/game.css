@@ -95,7 +95,7 @@ button:focus {
 ====== Loss Screen ======
 =========================
 */
-#lossScreen {
+#loss_screen {
   opacity: 0;
   z-index: 1;
   margin: auto;
@@ -113,14 +113,14 @@ button:focus {
   transition: opacity .25s ease-in-out;
 }
 
-#lossScreen h1 {
+#loss_screen h1 {
   margin-top: 100px;
 }
 
-#lossScreen p {
+#loss_screen p {
   font-size: 20px;
 }
 
-#lossScreen #finalScore {
+#loss_screen #final_score {
   font-size: 35px;
 }

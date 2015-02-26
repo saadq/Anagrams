@@ -201,7 +201,6 @@
   game.updateGlossary = function() {
     // Increase the difficulty after every 10 points earned by the player
     if(this.scoreNum !== 0 && this.scoreNum % 10 === 0) {
-      alert('you have leveled up!');
       this.levelUp();
     }
 
