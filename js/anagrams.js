@@ -79,32 +79,6 @@
     return String.fromCharCode(97 + Math.floor(Math.random() * 26));
   };
 
-  /**
-   * Returns the correct answer for the current word
-   */
-  var getCorrectChoice = function(word) {
-    var output;
-
-    do {
-      output = word.shuffle();
-    } while(output === word);
-
-    return output;
-  };
-
-  /**
-   * Returns an incorrect answer for the current word
-   */
-  var getIncorrectChoice = function(word) {
-    var output;
-
-    do {
-      output = word.replaceLetter();
-    } while(output.isCorrect());
-
-    return output.shuffle();
-  };
-
   // Game object used to to manipulate the timer, score, button choices, current word, and current level
   var game = {};
 
@@ -230,6 +204,32 @@
   };
 
   /**
+   * Returns the correct answer for the current word
+   */
+  game.getCorrectChoice = function(word) {
+    var output;
+
+    do {
+      output = word.shuffle();
+    } while(output === word);
+
+    return output;
+  };
+
+  /**
+   * Returns an incorrect answer for the current word
+   */
+  game.getIncorrectChoice = function(word) {
+    var output;
+
+    do {
+      output = word.replaceLetter();
+    } while(output.isCorrect());
+
+    return output.shuffle();
+  };
+
+  /**
    * Removes the previous word used and updates the remaining word count of the glossary
    */
   game.removePrevWord = function() {
@@ -259,12 +259,12 @@
 
     // Choose a random button to hold the correct choice
     this.correctButton = this.buttons[Math.floor(Math.random() * 4)];
-    this.correctButton.innerHTML = getCorrectChoice(this.currentWord.innerHTML);
+    this.correctButton.innerHTML = game.getCorrectChoice(this.currentWord.innerHTML);
 
     // Give the rest of the buttons incorrect choices
     for(i = 0; i < this.buttons.length; i++) {
       if(this.buttons[i] === this.correctButton) { continue; }
-      this.buttons[i].innerHTML = getIncorrectChoice(this.currentWord.innerHTML);
+      this.buttons[i].innerHTML = game.getIncorrectChoice(this.currentWord.innerHTML);
     }
 
     // Add event handlers to each button
