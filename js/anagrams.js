@@ -225,6 +225,7 @@
         break;
       default:
         this.currentGlossary = glossaries.suicidal;
+        break;
     }
   };
 
