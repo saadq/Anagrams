@@ -109,22 +109,22 @@
   // The Glossaries for each of the difficulty levels
   game.glossaries = {
     veryEasy: new Glossary([
-      'act', 'bar', 'car', 'dew', 'eat', 'far', 'gym',
-      'hey', 'ink', 'jet', 'key', 'log', 'mad', 'nap',
-      'odd', 'pal', 'ram', 'saw', 'tan', 'urn', 'vet',
-      'wed', 'zoo', 'the', 'and', 'for', 'are', 'but',
-      'not', 'you', 'all', 'any', 'can', 'her', 'was',
-      'one', 'our', 'out', 'day', 'get', 'has', 'him',
-      'his', 'how', 'man', 'new', 'now', 'old', 'see'
+      'act', 'all', 'and', 'any', 'are', 'bar', 'but',
+      'can', 'car', 'day', 'dew', 'eat', 'far', 'for',
+      'get', 'gym', 'has', 'her', 'hey', 'him', 'his',
+      'how', 'ink', 'jet', 'key', 'log', 'mad', 'man',
+      'nap', 'new', 'not', 'now', 'odd', 'old', 'one',
+      'our', 'out', 'pal', 'ram', 'saw', 'see', 'tan',
+      'the', 'urn', 'vet', 'was', 'wed', 'you', 'zoo'
     ]),
     easy: new Glossary([
-      'that', 'with', 'have', 'this', 'will', 'your', 'from',
-      'they', 'know', 'want', 'been', 'good', 'much', 'some',
-      'time', 'very', 'when', 'come', 'here', 'just', 'like',
-      'long', 'make', 'many', 'more', 'only', 'over', 'such',
-      'take', 'than', 'them', 'well', 'were', 'aeon', 'aero',
-      'back', 'bang', 'bell', 'bios', 'blog', 'blot', 'bots',
-      'cafe', 'edgy', 'navy', 'fold', 'spew', 'tact', 'howl'
+      'aeon', 'aero', 'back', 'bang', 'been', 'bell', 'bios',
+      'blog', 'blot', 'bots', 'cafe', 'come', 'edgy', 'fold',
+      'from', 'good', 'have', 'here', 'howl', 'just', 'know',
+      'like', 'long', 'make', 'many', 'more', 'much', 'navy',
+      'only', 'over', 'some', 'spew', 'such', 'tact', 'take',
+      'than', 'that', 'them', 'they', 'this', 'time', 'very',
+      'want', 'well', 'were', 'when', 'will', 'with', 'your'
     ]),
     medium:  new Glossary([
       'adept', 'aphid', 'aphis', 'apoda', 'apsis', 'arena', 'argon',
