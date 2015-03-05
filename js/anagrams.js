@@ -173,8 +173,8 @@
    * Updates the current glossary being used based on your current level
    */
   game.updateGlossary = function() {
-    // Increase the difficulty after every 10 points earned by the player
-    if(this.scoreNum !== 0 && this.scoreNum % 10 === 0) {
+    // Increase the difficulty after every 5 points earned by the player
+    if(this.scoreNum !== 0 && this.scoreNum % 5 === 0) {
       this.levelUp();
     }
 
