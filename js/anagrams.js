@@ -104,7 +104,7 @@
   game.scoreNum = 0;
 
   // The remaining time left for the countdown timer
-  game.secondsLeft = 500;
+  game.millsecondsLeft = 500;
 
   // The Glossaries for each of the difficulty levels
   game.glossaries = {
@@ -280,15 +280,15 @@
     // Clear the previous timer
     clearInterval(game.timer);
     game.timer = setInterval(function() {
-      if(game.secondsLeft === 0) {
+      if(game.millsecondsLeft === 0) {
         // If the timer reaches zero, clear the timer and end the game
         clearInterval(game.timer);
         game.over();
       } else {
-        game.secondsLeft--;
+        game.millsecondsLeft--;
       }
       var time = document.getElementById('timer');
-      time.innerHTML = (game.secondsLeft / 100).toFixed(2);
+      time.innerHTML = (game.millsecondsLeft / 100).toFixed(2);
     }, 10);
   };
 
@@ -296,7 +296,7 @@
    * Resets the countdown timer
    */
   game.resetTimer = function() {
-    game.secondsLeft = 500;
+    game.millsecondsLeft = 500;
   };
 
   /**
@@ -354,7 +354,7 @@
    */
   game.over = function(clickedButton) {
     // Stop the timer
-    game.secondsLeft = 0;
+    game.millsecondsLeft = 0;
 
     // Disable all of the buttons by removing their event handlers
     for(var i = 0; i < this.buttons.length; i++) {
