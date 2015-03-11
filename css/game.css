@@ -54,7 +54,6 @@ button:hover {
   color: #000;
   cursor: pointer;
   border: 10px solid #64fe63;
-  font-weight: bold;
 }
 
 button:focus {

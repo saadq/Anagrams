@@ -62,7 +62,7 @@
   String.prototype.replaceLetter = function() {
     var index = Math.floor(Math.random() * 100 % this.length);
     var newWord = this.slice(0, index) + this.slice(index + 1);
-    return newWord += randLetter();
+    return newWord + randLetter();
   };
 
   /**
