@@ -81,7 +81,7 @@ button:focus {
   top: -180px;
 }
 
-#currentWord {
+#current_word {
   position: relative;
   text-transform: uppercase;
   letter-spacing: 3px;;
