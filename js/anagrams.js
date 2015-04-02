@@ -62,7 +62,8 @@
   String.prototype.replaceLetter = function() {
     var index = Math.floor(Math.random() * 100 % this.length);
     var newWord = this.slice(0, index) + this.slice(index + 1);
-    return newWord + randLetter();
+    newWord += randLetter();
+    return newWord;
   };
 
   /**
@@ -83,13 +84,13 @@
   var game = {};
 
   // Cacheing elements
-  game.currentWord = document.getElementById('currentWord');
-  game.timer = document.getElementById('timer');
-  game.score = document.getElementById('score');
-  game.buttons = document.getElementsByClassName('anagramButton');
-  game.lossScreen = document.getElementById('loss_screen');
-  game.finalScore = document.getElementById('final_score');
-  game.resetButton = document.getElementById('reset');
+  game.currentWord = document.getElementById('current_word'); // The current word being displayed
+  game.timer = document.getElementById('timer'); // The timer being displayed
+  game.score = document.getElementById('score'); // The player's current score
+  game.buttons = document.getElementsByClassName('anagram_button'); // The buttons for the answer choices
+  game.lossScreen = document.getElementById('loss_screen'); // Hidden loss screen
+  game.finalScore = document.getElementById('final_score'); // Final score displayed on the loss screen
+  game.resetButton = document.getElementById('reset'); // Reset button displayed on the loss screen
 
   // Reference to the current button with the correct answer
   game.correctButton = null;
@@ -185,18 +186,23 @@
       case 0:
         this.currentGlossary = glossaries.veryEasy;
         break;
+
       case 1:
         this.currentGlossary = glossaries.easy;
         break;
+
       case 2:
         this.currentGlossary = glossaries.medium;
         break;
+
       case 3:
         this.currentGlossary = glossaries.hard;
         break;
+
       case 4:
         this.currentGlossary = glossaries.insane;
         break;
+
       default:
         this.currentGlossary = glossaries.suicidal;
         break;
