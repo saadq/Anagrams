@@ -183,29 +183,12 @@
 
     // Choose the glossary based on the current level
     switch(this.level) {
-      case 0:
-        this.currentGlossary = glossaries.veryEasy;
-        break;
-
-      case 1:
-        this.currentGlossary = glossaries.easy;
-        break;
-
-      case 2:
-        this.currentGlossary = glossaries.medium;
-        break;
-
-      case 3:
-        this.currentGlossary = glossaries.hard;
-        break;
-
-      case 4:
-        this.currentGlossary = glossaries.insane;
-        break;
-
-      default:
-        this.currentGlossary = glossaries.suicidal;
-        break;
+      case 0: this.currentGlossary = glossaries.veryEasy; break;
+      case 1: this.currentGlossary = glossaries.easy; break;
+      case 2: this.currentGlossary = glossaries.medium; break;
+      case 3: this.currentGlossary = glossaries.hard; break;
+      case 4: this.currentGlossary = glossaries.insane; break;
+      default: this.currentGlossary = glossaries.suicidal; break;
     }
   };
 
