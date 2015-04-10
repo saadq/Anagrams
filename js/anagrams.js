@@ -1,4 +1,4 @@
-(function() {
+(function(StringLib) {
   'use strict';
 
   /**
@@ -33,44 +33,6 @@
    */
   glossaryProto.updateWordCount = function() {
     this._length = this._words.length;
-  };
-
-  /**
-   * Shuffles the characters of a String
-   */
-  String.prototype.shuffle = function() {
-    var fragments = this.split('');
-    for (var i = fragments.length; i > 0;) {
-      var random = parseInt(Math.random() * i);
-      var temp = fragments[--i];
-      fragments[i] = fragments[random];
-      fragments[random] = temp;
-    }
-    return fragments.join('');
-  };
-
-  /**
-   * Sorts a String alphabetically
-   */
-  String.prototype.sort = function() {
-    return this.split('').sort().join('');
-  };
-
-  /**
-   * Replaces one letter of a String with a randomly selected letter
-   */
-  String.prototype.replaceLetter = function() {
-    var index = Math.floor(Math.random() * 100 % this.length);
-    var newWord = this.slice(0, index) + this.slice(index + 1);
-    newWord += randLetter();
-    return newWord;
-  };
-
-  /**
-   * Checks to see if the given word is a correct answer
-   */
-  String.prototype.isCorrect = function() {
-    return this.sort() === game.correctButton.innerHTML.sort();
   };
 
   /**
@@ -199,7 +161,7 @@
     var output;
 
     do {
-      output = word.shuffle();
+      output = StringLib.shuffle(word);
     } while (output === word);
 
     return output;
@@ -212,10 +174,10 @@
     var output;
 
     do {
-      output = word.replaceLetter();
-    } while (output.isCorrect());
+      output = StringLib.replaceLetter(word);
+    } while (StringLib.isCorrect(output, game.correctButton.innerHTML));
 
-    return output.shuffle();
+    return StringLib.shuffle(output);
   };
 
   /**
@@ -375,4 +337,4 @@
   };
 
   game.render();
-})();
+})(StringLib);
