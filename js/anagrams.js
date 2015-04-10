@@ -40,7 +40,7 @@
    */
   String.prototype.shuffle = function() {
     var fragments = this.split('');
-    for(var i = fragments.length; i > 0;) {
+    for (var i = fragments.length; i > 0;) {
       var random = parseInt(Math.random() * i);
       var temp = fragments[--i];
       fragments[i] = fragments[random];
@@ -175,14 +175,14 @@
    */
   game.updateGlossary = function() {
     // Increase the difficulty after every 5 points earned by the player
-    if(this.scoreNum !== 0 && this.scoreNum % 5 === 0) {
+    if (this.scoreNum !== 0 && this.scoreNum % 5 === 0) {
       this.levelUp();
     }
 
     var glossaries = this.glossaries;
 
     // Choose the glossary based on the current level
-    switch(this.level) {
+    switch (this.level) {
       case 0: this.currentGlossary = glossaries.veryEasy; break;
       case 1: this.currentGlossary = glossaries.easy; break;
       case 2: this.currentGlossary = glossaries.medium; break;
@@ -200,7 +200,7 @@
 
     do {
       output = word.shuffle();
-    } while(output === word);
+    } while (output === word);
 
     return output;
   };
@@ -213,7 +213,7 @@
 
     do {
       output = word.replaceLetter();
-    } while(output.isCorrect());
+    } while (output.isCorrect());
 
     return output.shuffle();
   };
@@ -251,13 +251,13 @@
     this.correctButton.innerHTML = game.getCorrectChoice(this.currentWord.innerHTML);
 
     // Give the rest of the buttons incorrect choices
-    for(i = 0; i < this.buttons.length; i++) {
-      if(this.buttons[i] === this.correctButton) { continue; }
+    for (i = 0; i < this.buttons.length; i++) {
+      if (this.buttons[i] === this.correctButton) { continue; }
       this.buttons[i].innerHTML = game.getIncorrectChoice(this.currentWord.innerHTML);
     }
 
     // Add event handlers to each button
-    for(i = 0; i < this.buttons.length; i++) {
+    for (i = 0; i < this.buttons.length; i++) {
       this.buttons[i].addEventListener('click', this.clickHandler);
     }
   };
@@ -269,7 +269,7 @@
     // Clear the previous timer
     clearInterval(game.timer);
     game.timer = setInterval(function() {
-      if(game.millsecondsLeft === 0) {
+      if (game.millsecondsLeft === 0) {
         // If the timer reaches zero, clear the timer and end the game
         clearInterval(game.timer);
         game.over();
@@ -293,7 +293,7 @@
    */
   game.clickHandler = function(event) {
     var clickedButton = event.target;
-    if(clickedButton === game.correctButton) {
+    if (clickedButton === game.correctButton) {
       game.resetTimer();
       game.updateScore();
       game.removePrevWord();
@@ -315,7 +315,7 @@
    */
   game.updateScore = function() {
     this.scoreNum++;
-    if(this.scoreNum.toString().length < 2) {
+    if (this.scoreNum.toString().length < 2) {
       this.scoreNum = '0' + this.scoreNum;
     }
     this.score.innerHTML = 'Score: ' + this.scoreNum;
@@ -346,12 +346,12 @@
     game.millsecondsLeft = 0;
 
     // Disable all of the buttons by removing their event handlers
-    for(var i = 0; i < this.buttons.length; i++) {
+    for (var i = 0; i < this.buttons.length; i++) {
       this.buttons[i].removeEventListener('click', this.clickHandler);
     }
 
     // If a wrong choice was made, show their incorrect choice in red
-    if(clickedButton) {
+    if (clickedButton) {
       clickedButton.style.background = 'red';
       clickedButton.style.border = 'red';
     }
