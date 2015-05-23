@@ -58,7 +58,7 @@ button:hover {
 
 button:focus, button:active {
   outline: none;
-  background: transparent;
+  background: #151919;
 }
 
 /*
