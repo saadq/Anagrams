@@ -1,13 +1,10 @@
-'use strict';
-
 /**
- * This is an object literal.
- * StringLib is set to the return of the IIFE.
- * When you include string-lib.js into your anagrams.html,
- * StringLib becomes a global namespace, with all of the string methods
- * available via StringLib.sort, etc etc.
+ * StringLib object used to manipulate Strings
+ * and to make comparisons with the current word from a Glossary
  */
 var StringLib = (function() {
+  'use strict';
+
   return {
     /**
      * Shuffles the characters of a String
@@ -43,7 +40,6 @@ var StringLib = (function() {
     replaceLetter: function(str) {
       var index = Math.floor(Math.random() * 100 % str.length);
       var newWord = str.slice(0, index) + str.slice(index + 1);
-
       newWord += this.randLetter();
       return newWord;
     },

@@ -35,24 +35,29 @@
     this._length = this._words.length;
   };
 
-  /**
-   * Returns a random lowercase letter
-   */
-  var randLetter = function() {
-    return String.fromCharCode(97 + Math.floor(Math.random() * 26));
-  };
-
   // Game object used to to manipulate the timer, score, button choices, current word, and current level
   var game = {};
 
-  // Cacheing elements
-  game.currentWord = document.getElementById('current_word'); // The current word being displayed
-  game.timer = document.getElementById('timer'); // The timer being displayed
-  game.score = document.getElementById('score'); // The player's current score
-  game.buttons = document.getElementsByClassName('anagram_button'); // The buttons for the answer choices
-  game.lossScreen = document.getElementById('loss_screen'); // Hidden loss screen
-  game.finalScore = document.getElementById('final_score'); // Final score displayed on the loss screen
-  game.resetButton = document.getElementById('reset'); // Reset button displayed on the loss screen
+  // The current word being displayed
+  game.currentWord = document.getElementById('current_word');
+
+  // The timer being displayed
+  game.timer = document.getElementById('timer');
+
+  // The player's current score
+  game.score = document.getElementById('score');
+
+  // The buttons for the answer choices
+  game.buttons = document.getElementsByClassName('anagram_button');
+
+  // Hidden loss screen
+  game.lossScreen = document.getElementById('loss_screen');
+
+  // Final score displayed on the loss screen
+  game.finalScore = document.getElementById('final_score');
+
+  // Reset button displayed on the loss screen
+  game.resetButton = document.getElementById('reset');
 
   // Reference to the current button with the correct answer
   game.correctButton = null;
@@ -145,11 +150,11 @@
 
     // Choose the glossary based on the current level
     switch (this.level) {
-      case 0: this.currentGlossary = glossaries.veryEasy; break;
-      case 1: this.currentGlossary = glossaries.easy; break;
-      case 2: this.currentGlossary = glossaries.medium; break;
-      case 3: this.currentGlossary = glossaries.hard; break;
-      case 4: this.currentGlossary = glossaries.insane; break;
+      case 0:  this.currentGlossary = glossaries.veryEasy; break;
+      case 1:  this.currentGlossary = glossaries.easy;     break;
+      case 2:  this.currentGlossary = glossaries.medium;   break;
+      case 3:  this.currentGlossary = glossaries.hard;     break;
+      case 4:  this.currentGlossary = glossaries.insane;   break;
       default: this.currentGlossary = glossaries.suicidal; break;
     }
   };
@@ -336,5 +341,6 @@
     this.displayTimer();
   };
 
+  // Start the game
   game.render();
 })(StringLib);
