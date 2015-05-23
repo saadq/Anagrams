@@ -56,8 +56,9 @@ button:hover {
   border: 10px solid #64fe63;
 }
 
-button:focus {
+button:focus, button:active {
   outline: none;
+  background: transparent;
 }
 
 /*
